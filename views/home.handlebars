@@ -1,0 +1,9 @@
+<h1>Home Page</h1>
+
+<ul id="blogsList">
+    {{#each blogs as |blog|}}
+    <li>{{content}}</li>
+    <p>Written by {{author.authorname}}</p>
+    <p>Written on {{createdAt}}</p>
+    {{/each}}
+</ul>
