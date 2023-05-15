@@ -5,7 +5,7 @@
 <br></br>
 
 <form>
-  <input id='blogInput' type="text" name="todo" placeholder="Walk the dog"/>
+  <input id='blogInput' type="text" name="blogInput" placeholder="Enter Blog"/>
 
 
   <button type="button" class="btn btn-dark" id="blogsubmitBtn">Submit</button>
@@ -14,7 +14,8 @@
 
 <ul id="blogList">
   {{#each Author.blogs as |blog|}}
-    <li>{{blog.content}}</li>
+    <li>{{blog.title}}</li>
+    <p>{{blog.content}}</p>
   {{/each}}
 </ul>
 

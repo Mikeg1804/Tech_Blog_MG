@@ -2,12 +2,12 @@ const Blog = require('./blogs');
 const Author = require('./authors');
 
 Author.hasMany(Blog, {
-    foregingKey: 'author_id',
+    primaryKey: 'authorId',
     onDelete: 'CASCADE',
 });
 
 Blog.belongsTo(Author, {
-    foreignKey: 'author_id',
+    foreignKey: 'authorId',
 });
 
 module.exports = { Author, Blog };

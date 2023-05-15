@@ -1,13 +1,13 @@
-const $todosubmitBtn = document.getElementById('blogsubmitBtn');
+const $blogsubmitBtn = document.getElementById('blogsubmitBtn');
 const $logoutBtn = document.getElementById('logoutBtn');
 const $blogInput = document.getElementById('blogInput');
 
 
 $blogsubmitBtn.addEventListener('click', async (event) => {
     event.preventDefault();
-  
+  console.log("CLICKED BLOG")
     if ($blogInput.value.trim() === '') {
-      return alert('Please enter a todo');
+      return alert('Please type your blog content');
     }
   
     try {
@@ -38,7 +38,7 @@ $blogsubmitBtn.addEventListener('click', async (event) => {
 if ($logoutBtn) {
   $logoutBtn.addEventListener('click', async () => {
     try {
-      const response = await fetch('/api/users/logout', {
+      const response = await fetch('/api/authors/logout', {
         method: 'POST',
       });
       const data = await response.json();

@@ -8,9 +8,9 @@ class Blog extends Model {
 Blog.init({
     id:{
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
+        autoIncrement: true
     },
     title: { type: DataTypes.STRING, 
         allowNull: false
@@ -18,19 +18,18 @@ Blog.init({
     content: { type: DataTypes.STRING, 
         allowNull: false 
     },
-    author_id: { type: DataTypes.INTEGER,
+    authorId: { type: DataTypes.INTEGER,
         references: {
             model: 'authors',
             key: 'id'
         },
-        allowNull: false,
     },
 }, 
 {
     sequelize,
-    timestamps: true,
+    // timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    // underscored: true,
     modelName: 'blogs'
 }
 );

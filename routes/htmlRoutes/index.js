@@ -62,22 +62,23 @@ router.get('/home', async (req, res) => {
 
 router.get('/authors/:authorId', async (req, res) => {
     try {
-      const { author_Id } = req.params;
-      const authorData = await Author.findByPk(author_Id, {
+      const { authorId } = req.params;
+      const authorData = await Author.findByPk(authorId, {
         include: [
           {
             model: Blog,
-            attributes: ['id', 'content',],
+            attributes: ['id', 'title', 'content',],
           }
         ]
       });
   
       const author = authorData.get({plain: true});
   
-      res.render('authorProfile', {
+      res.render('author_profile', {
         author,
       });
     } catch (error) {
+        console.log(error);
       res.status(500).json({error});
     }
   });
