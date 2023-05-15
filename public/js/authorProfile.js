@@ -1,6 +1,7 @@
 const $blogsubmitBtn = document.getElementById('blogsubmitBtn');
 const $logoutBtn = document.getElementById('logoutBtn');
 const $blogInput = document.getElementById('blogInput');
+const $blogTitle = document.getElementById('blogTitle');
 
 
 $blogsubmitBtn.addEventListener('click', async (event) => {
@@ -13,7 +14,7 @@ $blogsubmitBtn.addEventListener('click', async (event) => {
     try {
       const response = await fetch('/api/blogs', {
         method: 'POST',
-        body: JSON.stringify({content: $blogInput.value}),
+        body: JSON.stringify({ content: $blogInput.value, title: $blogTitle.value }),
         headers: {
           'Content-Type': 'application/json',
         }

@@ -4,15 +4,16 @@ const {Blog} = require('../../../models');
 router.post('/', async (req, res) => {
     try {
         const newBlogData = await Blog.create({
+            title: req.body.title,
             content: req.body.content,
-            Author_Id: req.session.author.id, 
+            authorId: req.session.author.id, 
         });
-        res.status(200).json(newBlogData);
+        res.json(newBlogData);
     } catch (err) {
         res.status(500).json(err);
     }
 
-})
+});
 
 // router.get('/', async (req, res) => {
 //     try {
