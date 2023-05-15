@@ -26,36 +26,34 @@ router.post('/login', async (req, res) => {
     try{
         const authorData = await Author.findOne({
             where: {
-                email: req.body.email
+                authorname: req.body.authorname,
             }
         });
         if (!authorData) {
-            res.status(400).json({message: 'No author with that email address!'});
-            return;
+            return res.status(400).json({message: 'Incorrect username or password!'});
         }
-        const validPassword = await authorData.checkPassword(req.body.password);
+        const validPassword = await bcrypt.compare(
+            req.body.password,
+            authorData.password
+            );
         if (!validPassword) {
-            res.status(400).json({message: 'Incorrect email or password!'});
-            return;
+            return res.status(400).json({message: 'Incorrect email or password!'});
         }
         req.session.save(() => {
-            req.session.author_id = authorData.id;
-            req.session.logged_in = true;
-            res.json({user: authorData, message: 'You are now logged in!'});
+            req.session.author = authorData.get({plain: true});
+            req.session.loggedin = true;
+            res.status(200).json(authorData);
         });    
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 });
 
 router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.json({ success: true });
         });
-    }else {
-        res.status(404).end();
-    }
-});
+      });
+      
 
 module.exports = router;

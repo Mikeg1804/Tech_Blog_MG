@@ -47,7 +47,7 @@ router.get('/home', async (req, res) => {
         const blogs = blogsData.map((blog) => blog.get({plain: true}));
         res.render('home', {
                     blogs,
-                    loggedIn: req.session.loggedIn || null,
+                    loggedInAuthor: req.session.author || null,
                 })
             } else {
                 res.redirect('/login');
@@ -58,6 +58,30 @@ router.get('/home', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+router.get('/authors/:authorId', async (req, res) => {
+    try {
+      const { author_Id } = req.params;
+      const authorData = await Author.findByPk(author_Id, {
+        include: [
+          {
+            model: Blog,
+            attributes: ['id', 'content',],
+          }
+        ]
+      });
+  
+      const author = authorData.get({plain: true});
+  
+      res.render('authorProfile', {
+        author,
+      });
+    } catch (error) {
+      res.status(500).json({error});
+    }
+  });
+  
 
 
 module.exports = router;

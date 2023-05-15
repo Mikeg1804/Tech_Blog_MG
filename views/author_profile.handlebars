@@ -5,17 +5,17 @@
 <br></br>
 
 <form>
-  <input id='logOff' type="text" name="todo" placeholder="Walk the dog"/>
+  <input id='blogInput' type="text" name="todo" placeholder="Walk the dog"/>
 
 
-  <button type="button" class="btn btn-dark" id="todosubmitBtn">Submit</button>
+  <button type="button" class="btn btn-dark" id="blogsubmitBtn">Submit</button>
 
 </form>
 
-<ul id="todoList">
+<ul id="blogList">
   {{#each Author.blogs as |blog|}}
     <li>{{blog.content}}</li>
   {{/each}}
 </ul>
 
-<script src="../public/js/authorProfile.js"></script>
+<script src="/js/authorProfile.js"></script>

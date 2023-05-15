@@ -6,6 +6,7 @@ const $loginBtn = document.getElementById('loginBtn');
 
 if($loginBtn) {
     $loginBtn.addEventListener('click', async (event) => {
+        console.log("CLICKED");
         event.preventDefault();
         const authorname = $authorname.value;
         const password = $password.value;
@@ -13,13 +14,13 @@ if($loginBtn) {
         if(!authorname ||!password) {return alert('Please enter authorname and password');}
     
     try{
-        const response = await fetch('/api/author/login', {
+        const response = await fetch('/api/authors/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({authorname, password})});
         const data = await response.json();
         if(data) {
-            location.href =`/author/${data.id}`;
+            location.href =`/authors/${data.id}`;
         } else {
             alert ('Invalid credentials');
             alert(data);
