@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
         authorData.password = hashedPassword;
         const newAuthor = await Author.create(authorData);
         req.session.save(() => {
-            req.session.Author = newAuthor.get({plain: true});
+            req.session.Author = newAuthor.id;
             req.session.logged_in = true;
             res.status(200).json(newAuthor);
         });

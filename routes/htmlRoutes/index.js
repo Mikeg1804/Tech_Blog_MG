@@ -63,6 +63,7 @@ router.get('/home', async (req, res) => {
 router.get('/authors/:authorId', async (req, res) => {
     try {
       const { authorId } = req.params;
+      console.log(req.params);
       const authorData = await Author.findByPk(authorId, {
         include: [
           {
@@ -71,11 +72,12 @@ router.get('/authors/:authorId', async (req, res) => {
           }
         ]
       });
-  
+  console.log(authorData);
       const author = authorData.get({plain: true});
-  
+  console.log(author);
       res.render('author_profile', {
         author,
+        loggedInAuthor: req.session.authorId || null,     
       });
     } catch (error) {
         console.log(error);

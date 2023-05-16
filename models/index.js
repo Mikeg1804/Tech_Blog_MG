@@ -2,7 +2,7 @@ const Blog = require('./blogs');
 const Author = require('./authors');
 
 Author.hasMany(Blog, {
-    primaryKey: 'authorId',
+    foreignKey: 'authorId',
     onDelete: 'CASCADE',
 });
 
