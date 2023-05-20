@@ -20,7 +20,7 @@ Blog.init({
     },
     authorId: { type: DataTypes.INTEGER,
         references: {
-            model: 'authors',
+            model: 'author',
             key: 'id'
         },
     },
@@ -29,7 +29,7 @@ Blog.init({
     sequelize,
     // timestamps: true,
     freezeTableName: true,
-    // underscored: true,
+    underscored: true,
     modelName: 'blogs'
 }
 );

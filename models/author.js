@@ -36,7 +36,7 @@ email: {
     // timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'authors'
+    modelName: 'author'
 });
 
 module.exports = Author;
