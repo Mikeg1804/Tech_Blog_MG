@@ -30,9 +30,9 @@ router.get('/login', async (req, res) => {
     }
 });
 
-router.get('/home', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
-        if(req.session.loggedIn){
+        // if(req.session.loggedIn){
            
       
         const blogsData = await Blog.findAll(
@@ -49,10 +49,10 @@ router.get('/home', async (req, res) => {
                     blogs,
                     loggedInAuthor: req.session.author || null,
                 })
-            } else {
-                res.redirect('/login');
-            return;
-            }
+            // } else {
+            //     res.redirect('/login');
+            // return;
+            // }
     }catch(err){
         console.log(err);
         res.status(500).json(err);

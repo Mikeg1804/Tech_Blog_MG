@@ -1,9 +1,15 @@
-<h1>Home Page</h1>
 
-<ul id="blogsList">
+
+
+    <h1>Previously Written Blogs:</h1>
+ 
+
+<ul class="p-3 mb-2 bg-secondary text-white" id="blogsList">
     {{#each blogs as |blog|}}
-    <li>{{content}}</li>
+    <p class="font-weight-bold">Blog Title: {{title}}</p>
+    <p class="form-control input-lg">{{content}}</p>
     <p>Written by {{author.authorname}}</p>
     <p>Written on {{createdAt}}</p>
     {{/each}}
 </ul>
+ <p>If you are an author, click <a href="/login">here</a> to login</p>

@@ -1,22 +1,24 @@
-<h4>Post</h4>
-<h1>{{author.authorname}}</h1>
-<button id="logoutBtn">Log out</button>
+
+<h1>Writer: {{author.authorname}}</h1>
+<button  class="btn btn-primary pull-right btn-sm RbtnMargin"id="logoutBtn">Log out</button>
 
 <br></br>
 
 <form>
-    <input id='blogTitle' type="text" name="blogTitle" placeholder="Enter Title"/>
-     <input id='blogInput' type="text" name="blogInput" placeholder="Enter Blog"/>
+    <input class="form-control input-sm" id='blogTitle' type="text" name="blogTitle" placeholder="Enter Title"/>
+     <input class="form-control input-lg" id='blogInput' type="text" name="blogInput" placeholder="Enter Blog"/>
 
-
-  <button type="button" class="btn btn-dark" id="blogsubmitBtn">Submit</button>
+<br>
+  <button type="button" class="btn btn-dark" id="blogsubmitBtn">Post</button>
 
 </form>
 
-<ul id="blogList">
+<br>
+<h3>Posted Blogs: </h3>
+<ul  id="blogList">
   {{#each author.blogs as |blog|}}
-    <li>{{blog.title}}</li>
-    <p>{{blog.content}}</p>
+    <p class="form-control input-sm">Blog Title: {{blog.title}}</p>
+    <p class="form-control input-lg">{{blog.content}}</p>
   {{/each}}
 </ul>
 
